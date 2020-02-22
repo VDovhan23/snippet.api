@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Transformers\Users\UserTransformer;
 
 class AuthController extends Controller
 {
@@ -48,9 +49,11 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function me()
+    public function me(Request $request)
     {
-        return response()->json(auth()->user());
+//            dd($request->toArray());
+        return fractal()->item(auth()->user())->transformWith(new UserTransformer())->toArray();
+//        return response()->json(auth()->user());
     }
 
     /**

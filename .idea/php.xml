@@ -95,6 +95,9 @@
       <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-php56" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-util" />
       <path value="$PROJECT_DIR$/api/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/api/vendor/league/fractal" />
+      <path value="$PROJECT_DIR$/api/vendor/spatie/fractalistic" />
+      <path value="$PROJECT_DIR$/api/vendor/spatie/laravel-fractal" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
