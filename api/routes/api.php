@@ -19,3 +19,7 @@ Route::group(['prefix'=>'auth', 'namespace'=>'Auth'], function (){
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
 });
+
+Route::group(['prefix'=>'snippets', 'namespace'=>'Snippets'], function (){
+    Route::post('', 'SnippetController@store');
+});
