@@ -30,6 +30,12 @@ class SnippetController extends Controller
            'uuid'=> Str::uuid()
         ]);
 
+        return fractal()
+            ->item($snippet)
+            ->transformWith(new SnippetTransformer())
+            ->parseIncludes(['steps'])
+            ->toArray();
+
     }
 
 
@@ -40,7 +46,7 @@ class SnippetController extends Controller
         return fractal()
             ->item($snippet)
             ->transformWith(new SnippetTransformer())
-            ->parseIncludes(['steps'])
+            ->parseIncludes(['steps', 'author', 'user'])
             ->toArray();
     }
 
