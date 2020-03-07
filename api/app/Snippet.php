@@ -12,11 +12,22 @@ class Snippet extends Model
     protected $fillable = ['uuid', 'title'];
 
 
+    public function getRouteKeyName (  ) {
+        return 'uuid';
+    }
+
+    /**
+     *
+     */
     public function steps(  ) {
-        $this->hasMany(Step::class)
+        return $this->hasMany(Step::class)
              ->orderBy('order', 'asc');
     }
+
+    /**
+     *
+     */
     public function user( ) {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -11,7 +11,7 @@ class Step extends Model
     protected $fillable = ['order', 'uuid', 'title', 'snippet_id'];
 
     public function user( ) {
-        $this->belongsTo(Snippet::class);
+        return $this->belongsTo(Snippet::class);
     }
 }
 

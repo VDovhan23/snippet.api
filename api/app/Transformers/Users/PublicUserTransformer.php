@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Transformers\User;
+namespace App\Transformers\Users;
 
 use League\Fractal\TransformerAbstract;
 use App\User;
 
-class UserTransformer extends TransformerAbstract
+class PublicUserTransformer extends TransformerAbstract
 {
     /**
      * List of resources to automatically include
@@ -34,8 +34,8 @@ class UserTransformer extends TransformerAbstract
     {
         return [
             'id'=> $user->id,
-            'email' => $user->email,
             'name' => $user->name,
+            'joined'=> $user->created_at->toDateTimeString()
         ];
     }
 }
