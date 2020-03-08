@@ -8,10 +8,17 @@ use App\Snippet;
 class Step extends Model
 {
 
-    protected $fillable = ['order', 'uuid', 'title', 'snippet_id'];
+    public function getRouteKeyName (  ) {
+        return 'uuid';
+    }
 
-    public function user( ) {
+
+    protected $fillable = ['order', 'uuid', 'title', 'snippet_id', 'body'];
+
+    public function snippet( ) {
         return $this->belongsTo(Snippet::class);
     }
+
+
 }
 
