@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Snippets;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SnippetUpdateRequest;
 use App\Snippet;
 use App\Transformers\Snippets\SnippetTransformer;
 use App\Transformers\Snippets\StepTransformer;
@@ -18,7 +19,7 @@ class SnippetController extends Controller
      */
     public function __construct() {
         $this->middleware(['auth:api'])
-             ->only('store');
+             ->only('store', 'update');
     }
 
     /**
@@ -48,6 +49,13 @@ class SnippetController extends Controller
             ->transformWith(new SnippetTransformer())
             ->parseIncludes(['steps', 'author', 'user'])
             ->toArray();
+    }
+
+    public function update(SnippetUpdateRequest $request, Snippet $snippet) {
+
+        $snippet->update($request->only('title'));
+
+
     }
 
 
