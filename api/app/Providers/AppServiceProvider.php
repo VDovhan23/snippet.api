@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Observers\SnippetObserver;
+use App\Observers\StepObserver;
 use App\Snippet;
+use App\Step;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Snippet::observe(SnippetObserver::class);
+        Step::observe(StepObserver::class);
     }
 }
