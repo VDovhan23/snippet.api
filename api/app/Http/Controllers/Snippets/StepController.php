@@ -56,4 +56,17 @@ class StepController extends Controller {
         return $result;
     }
 
+    public function destroy(Snippet $snippet, Step $step ) {
+        //autorize
+
+        if ($snippet->steps()->count() === 1){
+            return response(["message"=>'Step'. $step['title'] .'can\'t be deleted'],404 );
+        }
+
+        $step->delete();
+
+        return response(["message"=>'Step '. $step['title'] .' was deleted'],200 );
+
+    }
+
 }
