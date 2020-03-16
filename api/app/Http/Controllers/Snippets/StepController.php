@@ -31,7 +31,6 @@ class StepController extends Controller {
     public function store( Snippet $snippet, Request $request ) {
         //autorize
 
-
         $step = $snippet->steps()->create(
             array_merge( $request->only( [ 'title', 'body' ] ), [ 'order' => $this->getOrder($request) ] )
         );

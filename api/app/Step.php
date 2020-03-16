@@ -29,7 +29,7 @@ class Step extends Model {
                    ->first();
 
         if ( ! $add ) {
-            return self::orderBy('order', 'decs')->first()->order + 1;
+            return self::orderBy('order', 'desc')->first()->order + 1;
         }
 
         return ( $this->order + $add->order ) / 2;
