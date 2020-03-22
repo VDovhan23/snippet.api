@@ -9,7 +9,7 @@ use App\Step;
 class Snippet extends Model
 {
 
-    protected $fillable = ['uuid', 'title'];
+    protected $fillable = ['uuid', 'title', 'is_public'];
 
 
     public function getRouteKeyName (  ) {

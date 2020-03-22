@@ -24,7 +24,8 @@ class SnippetUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'nullable'
+            'title' => 'nullable',
+            'is_public' => 'boolean|nullable'
         ];
     }
 }

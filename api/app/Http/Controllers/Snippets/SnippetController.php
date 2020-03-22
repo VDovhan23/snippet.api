@@ -53,11 +53,9 @@ class SnippetController extends Controller
 
     public function update(SnippetUpdateRequest $request, Snippet $snippet) {
 
-        $snippet->update(
-            array_merge($request->only('title'), ['order' => 1])
-        );
+        $snippet->update( $request->all('title', 'is_public'));
 
-
+        return $snippet->is_public;
     }
 
 
