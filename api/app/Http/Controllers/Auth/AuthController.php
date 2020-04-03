@@ -52,7 +52,6 @@ class AuthController extends Controller
      */
     public function me(Request $request)
     {
-//            dd($request->toArray());
         return fractal()->item(auth()->user())->transformWith(new UserTransformer())->toArray();
 //        return response()->json(auth()->user());
     }
@@ -64,6 +63,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
+
         auth()->logout();
 
         return response()->json(['message' => 'Successfully logged out']);

@@ -24,6 +24,10 @@ class Snippet extends Model
              ->orderBy('order', 'asc');
     }
 
+    public function isPublic() {
+        return $this->is_public;
+    }
+
     /**
      *
      */

@@ -44,6 +44,9 @@ class SnippetController extends Controller
      * @param Snippet $snippet
      */
     public function show( Snippet $snippet) {
+
+        $this->authorize('show', $snippet);
+
         return fractal()
             ->item($snippet)
             ->transformWith(new SnippetTransformer())
@@ -53,8 +56,9 @@ class SnippetController extends Controller
 
     public function update(SnippetUpdateRequest $request, Snippet $snippet) {
 
+      $this->authorize('update', $snippet);
 
-        $snippet->update( $request->all('title', 'is_public'));
+        $snippet->update( $request->all());
 
         return $snippet;
     }

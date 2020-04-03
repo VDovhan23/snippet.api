@@ -16,7 +16,7 @@ class StepController extends Controller {
      */
     public function update( Snippet $snippet, Step $step, Request $request ) {
 
-        //autorize
+        $this->authorize('update', $step);
 
         $step->update( $request->only( [ 'title', 'body' ] ) );
 
@@ -29,7 +29,8 @@ class StepController extends Controller {
      * @return array
      */
     public function store( Snippet $snippet, Request $request ) {
-        //autorize
+
+        $this->authorize('storeStep', $snippet);
 
         $step = $snippet->steps()->create(
             array_merge( $request->only( [ 'title', 'body' ] ), [ 'order' => $this->getOrder($request) ] )
@@ -57,7 +58,8 @@ class StepController extends Controller {
     }
 
     public function destroy(Snippet $snippet, Step $step ) {
-        //autorize
+
+        $this->authorize('destroy', $step);
 
         if ($snippet->steps()->count() === 1){
             return response(["message"=>'Step'. $step['title'] .'can\'t be deleted'],404 );
