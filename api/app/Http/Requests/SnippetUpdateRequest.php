@@ -25,7 +25,7 @@ class SnippetUpdateRequest extends FormRequest
     {
         return [
             'title' => 'nullable',
-            'is_public' => 'boolean|nullable'
+            'is_public' => 'nullable|boolean'
         ];
     }
 }
