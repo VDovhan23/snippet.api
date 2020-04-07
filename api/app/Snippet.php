@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Step;
@@ -14,6 +15,10 @@ class Snippet extends Model
 
     public function getRouteKeyName (  ) {
         return 'uuid';
+    }
+
+    public function scopePublic(Builder $builder ) {
+        return $builder->where('is_public', true);
     }
 
     /**
