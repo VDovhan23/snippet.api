@@ -18,7 +18,7 @@ class SnippetController extends Controller {
      */
     public function __construct() {
         $this->middleware( [ 'auth:api' ] )
-             ->only( 'store', 'update' );
+             ->only( 'store', 'update', 'mySnippets');
     }
 
     /**
@@ -48,7 +48,17 @@ class SnippetController extends Controller {
             ->transformWith( new SnippetTransformer() )
             ->parseIncludes( [ 'steps' ] )
             ->toArray();
+    }
 
+    /**
+     * @return array
+     */
+    public function mySnippets( ) {
+        return fractal()
+            ->collection(
+                Snippet::where('user_id', auth()->id())->latest()->get()
+            )->transformWith( new SnippetTransformer() )
+            ->toArray();
     }
 
 
@@ -74,6 +84,22 @@ class SnippetController extends Controller {
 
         return $snippet;
     }
+
+    /**
+     * @param Snippet $snippet
+     *
+     * @return string
+     * @throws \Exception
+     */
+    public function destroy( Snippet $snippet ) {
+
+        $this->authorize( 'delete', $snippet );
+
+        $snippet->delete( );
+
+        return 'OK';
+    }
+
 
 
 }

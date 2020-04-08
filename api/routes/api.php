@@ -22,9 +22,11 @@ Route::group(['prefix'=>'auth', 'namespace'=>'Auth'], function (){
 
 Route::group(['prefix'=>'snippets', 'namespace'=>'Snippets'], function (){
     Route::get('', 'SnippetController@index');
+    Route::get('me', 'SnippetController@mySnippets');
     Route::post('', 'SnippetController@store');
     Route::get('{snippet}', 'SnippetController@show');
     Route::patch('{snippet}', 'SnippetController@update');
+    Route::delete('{snippet}', 'SnippetController@destroy');
 
 
     Route::patch('{snippet}/steps/{step}', 'StepController@update');
