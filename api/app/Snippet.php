@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Transformers\Snippets\SnippetTransformer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
@@ -14,6 +15,14 @@ class Snippet extends Model
 
     protected $fillable = ['uuid', 'title', 'is_public'];
 
+
+    public function toSearchableArray(  ) {
+        return fractal()
+            ->item($this)
+            ->transformWith(new SnippetTransformer())
+            ->parseIncludes(['author', 'steps'])
+            ->toArray();
+    }
 
     public function getRouteKeyName (  ) {
         return 'uuid';
