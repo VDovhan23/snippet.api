@@ -98,6 +98,9 @@
       <path value="$PROJECT_DIR$/api/vendor/league/fractal" />
       <path value="$PROJECT_DIR$/api/vendor/spatie/fractalistic" />
       <path value="$PROJECT_DIR$/api/vendor/spatie/laravel-fractal" />
+      <path value="$PROJECT_DIR$/api/vendor/laravel/scout" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/api/vendor/algolia/algoliasearch-client-php" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

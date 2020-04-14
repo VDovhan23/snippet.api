@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Step;
+use Laravel\Scout\Searchable;
 
 class Snippet extends Model
 {
+    use Searchable;
 
     protected $fillable = ['uuid', 'title', 'is_public'];
 
