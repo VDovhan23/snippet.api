@@ -16,6 +16,11 @@ class Snippet extends Model
     protected $fillable = ['uuid', 'title', 'is_public'];
 
 
+    public function getRouteKeyName (  ) {
+        return 'uuid';
+    }
+
+
     public function toSearchableArray(  ) {
         return fractal()
             ->item($this)
@@ -24,9 +29,7 @@ class Snippet extends Model
             ->toArray();
     }
 
-    public function getRouteKeyName (  ) {
-        return 'uuid';
-    }
+
 
     public function scopePublic(Builder $builder ) {
         return $builder->where('is_public', true);

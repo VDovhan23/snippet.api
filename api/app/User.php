@@ -13,6 +13,13 @@ class User extends Authenticatable  implements JWTSubject
     use Notifiable;
 
     /**
+     * @return string
+     */
+    public function getRouteKeyName (  ) {
+        return 'username';
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
