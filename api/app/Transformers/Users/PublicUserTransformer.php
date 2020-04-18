@@ -35,7 +35,8 @@ class PublicUserTransformer extends TransformerAbstract
         return [
             'id'=> $user->id,
             'name' => $user->name,
-            'joined'=> $user->created_at->toDateTimeString()
+            'username'=> $user->username,
+            'joined'=> $user->created_at->toDateTimeString(),
         ];
     }
 }
