@@ -33,3 +33,5 @@ Route::group(['prefix'=>'snippets', 'namespace'=>'Snippets'], function (){
     Route::delete('{snippet}/steps/{step}', 'StepController@destroy');
     Route::post('{snippet}/steps', 'StepController@store');
 });
+
+    Route::get('keys/algolia', 'Keys\AlgoliaKeyController');
