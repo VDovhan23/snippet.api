@@ -37,6 +37,7 @@ Route::group( [ 'prefix' => 'snippets', 'namespace' => 'Snippets' ], function ()
 Route::group( [ 'prefix' => 'users/{user}', 'namespace' => 'Users' ], function () {
     Route::get( '', 'UserController@show' );
     Route::get( 'snippets', 'SnippetController@index' );
+    Route::patch( '', 'UserController@update' );
 
 });
 Route::get( 'keys/algolia', 'Keys\AlgoliaKeyController' );
