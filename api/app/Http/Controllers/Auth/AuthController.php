@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserCreateRequest;
 use App\Providers\RouteServiceProvider;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +30,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
 
@@ -91,6 +93,22 @@ class AuthController extends Controller
         return response()->json([
             'data' => compact('token')
         ]);
+    }
+
+
+    /**
+     * @param UserCreateRequest $request
+     *
+     * @return array
+     */
+    public function register(UserCreateRequest $request) {
+
+        $user = User::create($request->only('email', 'name', 'username', 'password'));
+
+        return fractal()
+            ->item($user)
+            ->transformWith(new UserTransformer())
+            ->toArray();
     }
 
 }
